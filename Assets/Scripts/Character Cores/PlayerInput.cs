@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class PlayerInput : MonoBehaviour {
 
 	public float xMove { get; private set; }
@@ -13,11 +14,11 @@ public class PlayerInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		UpdateInput();
 		AssignInputToAction();
@@ -26,8 +27,8 @@ public class PlayerInput : MonoBehaviour {
 
 	void UpdateInput () {
 
-		xMove = Input.GetAxis("horizontal");
-		yMove = Input.GetAxis("vertical");
+		xMove = Input.GetAxis("Horizontal");
+		yMove = Input.GetAxis("Vertical");
 		jump  = Input.GetKeyDown(KeyCode.Space);
 		whack = Input.GetKeyDown(KeyCode.J);
 
@@ -36,6 +37,17 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	void AssignInputToAction () {
-		
+		if (xMove > 0)
+        {
+            PlayerMovement.moveRight(GetComponent<Rigidbody2D>());
+        }
+        else if (xMove < 0)
+        {
+            PlayerMovement.moveLeft(GetComponent<Rigidbody2D>());
+        }
+        else if (xMove == 0)
+        {
+            PlayerMovement.slowDown(GetComponent<Rigidbody2D>());
+        }
 	}
 }
