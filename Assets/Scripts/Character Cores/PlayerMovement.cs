@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public static float Acceleration = 10f;
     public static Vector2 force;
 
+
+
     public static void moveRight(Rigidbody2D rb)
     {
         Speed = rb.velocity.x;
