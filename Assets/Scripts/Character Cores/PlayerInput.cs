@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour {
 	public float yMove { get; private set; }
 	public bool  jump  { get; private set; }
 	public bool  whack { get; private set; }
-
+  
 
 	/*player movement script */
 
@@ -39,15 +39,15 @@ public class PlayerInput : MonoBehaviour {
 	void AssignInputToAction () {
 		if (xMove > 0)
         {
-            PlayerMovement.moveRight(GetComponent<Rigidbody2D>());
+            GetComponent<PlayerMovement>().moveRight();
         }
         else if (xMove < 0)
         {
-            PlayerMovement.moveLeft(GetComponent<Rigidbody2D>());
+            GetComponent<PlayerMovement>().moveLeft();
         }
         else if (xMove == 0)
         {
-            PlayerMovement.slowDown(GetComponent<Rigidbody2D>());
+            GetComponent<PlayerMovement>().slowDown();
         }
 	}
 }

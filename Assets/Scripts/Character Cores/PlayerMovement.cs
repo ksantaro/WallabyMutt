@@ -4,13 +4,18 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+    public float Speed;
+    public float maxSpeed = 5;
+    public float Acceleration = 10f;
+    public Vector2 force;
+    public Rigidbody2D rb;
 
-    public static float Speed;
-    public static float maxSpeed = 5;
-    public static float Acceleration = 10f;
-    public static Vector2 force;
-
-    public static void moveRight(Rigidbody2D rb)
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+    public void moveRight()
     {
         Speed = rb.velocity.x;
         rb.AddForce(Vector2.right * Acceleration);
@@ -19,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
             Speed = maxSpeed;
         }
     }
-    public static void moveLeft(Rigidbody2D rb)
+    public void moveLeft()
     {
         Speed = rb.velocity.x;
         rb.AddForce(Vector2.left * Acceleration);
@@ -28,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
             Speed = -maxSpeed;
         }
     }
-    public static void slowDown(Rigidbody2D rb)
+    public void slowDown()
     {
         force = (rb.mass * -rb.velocity.normalized * maxSpeed) / 0.8f;
         rb.AddForce(force * Time.fixedDeltaTime);
