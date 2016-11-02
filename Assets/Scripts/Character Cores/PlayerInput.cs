@@ -38,16 +38,13 @@ public class PlayerInput : MonoBehaviour {
 
 	void AssignInputToAction () {
 		if (xMove > 0)
-        {
             GetComponent<PlayerMovement>().moveRight();
-        }
         else if (xMove < 0)
-        {
             GetComponent<PlayerMovement>().moveLeft();
-        }
         else if (xMove == 0)
-        {
             GetComponent<PlayerMovement>().slowDown();
-        }
+        if (jump || yMove > 0)
+            GetComponent<PlayerMovement>().jump();
+        
 	}
 }
