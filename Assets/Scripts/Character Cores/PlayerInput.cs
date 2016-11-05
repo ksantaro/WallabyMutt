@@ -8,12 +8,19 @@ public class PlayerInput : MonoBehaviour {
 	public float yMove { get; private set; }
 	public bool  jump  { get; private set; }
 	public bool  whack { get; private set; }
+
+	private I_Ability iAbility;
+	private PlayerMovement PM;
+
   
 
 	/*player movement script */
 
 	// Use this for initialization
 	void Start () {
+
+		iAbility = GetComponent<I_Ability>();
+		PM = GetComponent<PlayerMovement>();
         
 	}
 	
@@ -37,6 +44,7 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	void AssignInputToAction () {
+<<<<<<< Updated upstream
 		if (xMove > 0)
             GetComponent<PlayerMovement>().moveRight();
         else if (xMove < 0)
@@ -46,5 +54,27 @@ public class PlayerInput : MonoBehaviour {
         if (jump || yMove > 0)
             GetComponent<PlayerMovement>().jump();
         
+=======
+
+		if (PM) {
+
+			if (xMove > 0)
+			{
+				PM.moveRight();
+			}
+			else if (xMove < 0)
+			{
+				PM.moveLeft();
+			}
+			else if (xMove == 0)
+			{
+				PM.slowDown();
+			}
+		}
+
+        if (whack) {
+        	iAbility.Attack();
+        }
+>>>>>>> Stashed changes
 	}
 }
