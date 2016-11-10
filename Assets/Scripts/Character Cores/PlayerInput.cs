@@ -39,22 +39,9 @@ public class PlayerInput : MonoBehaviour {
 		jump  = Input.GetKeyDown(KeyCode.Space);
 		whack = Input.GetKeyDown(KeyCode.J);
 
-
-		
 	}
 
-	void AssignInputToAction () {
-<<<<<<< Updated upstream
-		if (xMove > 0)
-            GetComponent<PlayerMovement>().moveRight();
-        else if (xMove < 0)
-            GetComponent<PlayerMovement>().moveLeft();
-        else if (xMove == 0)
-            GetComponent<PlayerMovement>().slowDown();
-        if (jump || yMove > 0)
-            GetComponent<PlayerMovement>().jump();
-        
-=======
+	void AssignInputToAction () {        
 
 		if (PM) {
 
@@ -75,6 +62,5 @@ public class PlayerInput : MonoBehaviour {
         if (whack) {
         	iAbility.Attack();
         }
->>>>>>> Stashed changes
 	}
 }
