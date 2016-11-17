@@ -11,21 +11,25 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 4f;
 
 
-    bool   grounded = false;
     public Transform groundCheck;
-    float  groundCircleRadius = 0.2f;
     public LayerMask groundMask;
+
+    public AudioClip jumpSound;
 
 
 	private Rigidbody2D RB;
 	private SpriteRenderer SR;
+	private AudioSource AS;
 	private Vector2 force;
+	float   groundCircleRadius = 0.2f;
+	bool    grounded = false;
 //	private bool rightFace = true;
 
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponentInChildren<SpriteRenderer>();
+        AS = GetComponentInChildren<AudioSource>();
     }
 
     void FixedUpdate()
@@ -36,17 +40,21 @@ public class PlayerMovement : MonoBehaviour
 //            flip();
 //        if (Speed < 0 && rightFace)
 //            flip();
+
+//		AS.clip = jumpSound;
+
+		print(RB.velocity.x);
     }
 
     public void moveRight()
 
     {
-        Speed = RB.velocity.x;
+//        Speed = RB.velocity.x;
         RB.AddForce(Vector2.right * Acceleration);
 
-        if (Speed > maxSpeed)
+        if (RB.velocity.x > maxSpeed)
         {
-            Speed = maxSpeed;
+			RB.velocity = new Vector2(maxSpeed, RB.velocity.y);
         }
 
         //Facing the sprite to the right
@@ -55,11 +63,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void moveLeft()
     {
-        Speed = RB.velocity.x;
+//        Speed = RB.velocity.x;
         RB.AddForce(Vector2.left * Acceleration);
-        if (Math.Abs(Speed) > maxSpeed)
+
+
+		if (RB.velocity.x < -maxSpeed)
         {
-            Speed = -maxSpeed;
+			RB.velocity = new Vector2(-maxSpeed, RB.velocity.y);
         }
 
 		//Facing the sprite to the left
@@ -79,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
         {
 //            rb.AddForce(new Vector2(0, jumpHeight));
 			RB.velocity = new Vector2(RB.velocity.x, CalculateJumpHeight(jumpHeight));
+
+			AS.PlayOneShot(jumpSound);
         }
     }
 
