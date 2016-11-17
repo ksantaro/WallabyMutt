@@ -59,6 +59,10 @@ public class PlayerInput : MonoBehaviour {
 			}
 		}
 
+		if (jump) {
+			PM.jump();
+		}
+
         if (whack) {
         	iAbility.Attack();
         }
