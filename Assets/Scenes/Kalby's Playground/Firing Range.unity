@@ -174,35 +174,35 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -11.23
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: 1.15
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4000014227819460, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+    - target: {fileID: 4000010211914534, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe539c4bdb9a480fb750c0cb96acd9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1000011399453142, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
+  projectile: {fileID: 1000011675032436, guid: d4437aa02ac4a4ad0a4246d9074e82da, type: 2}
   launchDirection: 0
   fireIntervals: 0.5
 --- !u!114 &1923590732

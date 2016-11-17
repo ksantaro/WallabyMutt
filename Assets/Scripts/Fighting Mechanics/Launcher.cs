@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Launcher : MonoBehaviour, I_Ability {
+public class Launcher : MonoBehaviour, IAbility {
 
 	public enum LaunchDirection {
-
 		Right,
 		Up
 	}
@@ -17,17 +16,25 @@ public class Launcher : MonoBehaviour, I_Ability {
 	private Vector2 launchingVector;
 	private GameObject spawnedProjectile;
 
+	private bool canFire = true;
+
+
 	// Use this for initialization
 	void Start () {
 		
 	}
 
+
 	public void Attack () {
 
+		if (!canFire)
+		return;
+
+
 		switch (launchDirection) {
-			case LaunchDirection.Right: launchingVector = Vector2.right;
+			case LaunchDirection.Right: launchingVector = transform.right;
 			break;
-			case LaunchDirection.Up: launchingVector = Vector2.up;
+			case LaunchDirection.Up: 	launchingVector = transform.up;
 			break;
 		}
 
@@ -37,12 +44,16 @@ public class Launcher : MonoBehaviour, I_Ability {
 		projectileProperties.startingPoint = transform.position;
 		projectileProperties.launchVector = this.launchingVector;
 
+		StartCoroutine("FireDelay");
+
 
 	}
 
-	
-	// Update is called once per frame
-	void Update () {
-	
+	private IEnumerator FireDelay () {
+		canFire = false;
+		yield return new WaitForSeconds(fireIntervals);
+		canFire = true;
 	}
+
+
 }

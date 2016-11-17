@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour {
 	public bool  jump  { get; private set; }
 	public bool  whack { get; private set; }
 
-	private I_Ability iAbility;
+	private IAbility iAbility;
 	private PlayerMovement PM;
 
   
@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		iAbility = GetComponent<I_Ability>();
+		iAbility = GetComponent<IAbility>();
 		PM = GetComponent<PlayerMovement>();
         
 	}
@@ -37,7 +37,7 @@ public class PlayerInput : MonoBehaviour {
 		xMove = Input.GetAxis("Horizontal");
 		yMove = Input.GetAxis("Vertical");
 		jump  = Input.GetKeyDown(KeyCode.Space);
-		whack = Input.GetKeyDown(KeyCode.J);
+		whack = Input.GetKey(KeyCode.J);
 
 	}
 

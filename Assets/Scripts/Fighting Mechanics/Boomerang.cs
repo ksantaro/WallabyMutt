@@ -3,19 +3,21 @@ using System.Collections;
 using System.Linq;
 
 
-public class Boomerang : Projectile, I_Damagable {
+public class Boomerang : Projectile, IDamagable {
 
 
 	public float spinAnimationMultiplier = 1;
 
 	private Rigidbody2D RB;
 	private Animator ANIM;
+	private AudioSource ADS;
 
 
 	// Use this for initialization
 	void Start () {
-		RB = GetComponent<Rigidbody2D>();
-		ANIM = GetComponent<Animator>();
+		RB 		= GetComponent<Rigidbody2D>();
+		ANIM 	= GetComponent<Animator>();
+		ADS 	= GetComponent<AudioSource>();
 
 		OnSpawn();
 
@@ -51,6 +53,15 @@ public class Boomerang : Projectile, I_Damagable {
 
 	void OnSpawn () {
 		RB.velocity = launchVector * speed;
+
+		if (travelingSound) {
+
+			if (!ADS.isPlaying) {
+				ADS.clip = travelingSound;
+				ADS.Play();
+			}
+		}
+
 	}
 
 
@@ -70,6 +81,9 @@ public class Boomerang : Projectile, I_Damagable {
 		
 		RB.gravityScale = 0.5f;
 		RB.isKinematic = false;
+
+		ADS.clip = impactSound;
+		ADS.Play();
 
 		Destroy(gameObject, 3);
 		

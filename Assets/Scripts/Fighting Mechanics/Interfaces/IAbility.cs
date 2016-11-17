@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface I_Ability {
+public interface IAbility {
 
 	void Attack();
 }

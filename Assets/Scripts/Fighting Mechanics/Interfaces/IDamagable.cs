@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface I_Damagable {
+public interface IDamagable {
 
 	void Hit (Collider2D c);
 

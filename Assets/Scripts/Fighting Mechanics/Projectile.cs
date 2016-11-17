@@ -8,5 +8,7 @@ public class Projectile : WeaponBase {
 	public Vector2 launchVector;
 	public Vector3 startingPoint;
 
+	public AudioClip travelingSound;
+	public AudioClip impactSound;
 	
 }
