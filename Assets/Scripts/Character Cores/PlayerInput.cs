@@ -19,8 +19,8 @@ public class PlayerInput : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		iAbility = GetComponent<IAbility>();
-		PM = GetComponent<PlayerMovement>();
+		iAbility = GetComponentInChildren<IAbility>();
+		PM 		 = GetComponent<PlayerMovement>();
         
 	}
 	

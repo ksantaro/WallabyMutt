@@ -5,9 +5,10 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
     
-    public float Speed;
+    public float speed;
     public float maxSpeed = 5;
-    public float Acceleration = 10f;
+    public float acceleration = 10f;
+    public float deceleration = 10f;
     public float jumpHeight = 4f;
 
 
@@ -43,14 +44,16 @@ public class PlayerMovement : MonoBehaviour
 
 //		AS.clip = jumpSound;
 
-		print(RB.velocity.x);
+//		print(RB.velocity.x);
+
+		
     }
 
     public void moveRight()
 
     {
 //        Speed = RB.velocity.x;
-        RB.AddForce(Vector2.right * Acceleration);
+        RB.AddForce(Vector2.right * acceleration);
 
         if (RB.velocity.x > maxSpeed)
         {
@@ -64,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     public void moveLeft()
     {
 //        Speed = RB.velocity.x;
-        RB.AddForce(Vector2.left * Acceleration);
+        RB.AddForce(Vector2.left * acceleration);
 
 
 		if (RB.velocity.x < -maxSpeed)
@@ -74,21 +77,23 @@ public class PlayerMovement : MonoBehaviour
 
 		//Facing the sprite to the left
         SR.flipX = true;
+
+
     }
 
     public void slowDown() //applies force to slow character down
     {
-        force = (RB.mass * -RB.velocity.normalized * maxSpeed) / 0.8f;
-        RB.AddForce(force * Time.fixedDeltaTime);
+        force = new Vector2((RB.velocity.x * -deceleration), RB.velocity.y);
+        RB.AddForce(force, ForceMode2D.Force);
     }
 
-    public void jump() //to use this properly, an child gameObject of the character has to be set in the Ground Check field
+	public void jump() //to use this properly, an child gameObject of the character has to be set in the Ground Check field
                        //in PlayerMovement
     {
         if (grounded)
         {
 //            rb.AddForce(new Vector2(0, jumpHeight));
-			RB.velocity = new Vector2(RB.velocity.x, CalculateJumpHeight(jumpHeight));
+			RB.velocity = new Vector2(RB.velocity.x, GetJumpVelocity(jumpHeight));
 
 			AS.PlayOneShot(jumpSound);
         }
@@ -103,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 //        transform.localScale = scale;
 //    }
 
-    float CalculateJumpHeight (float height) {
+    float GetJumpVelocity (float height) {
     	return Mathf.Sqrt(Mathf.Abs(2 * height * Physics2D.gravity.y));
     }
     

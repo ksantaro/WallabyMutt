@@ -42,9 +42,8 @@ public class Boomerang : Projectile, IDamagable {
 		GameObject otherGO = c.gameObject;
 		
 		if (tagsToHit.Contains(otherGO.tag)) {
-			
 			if (otherGO.GetComponentInParent<Health>()) {
-				
+
 				otherGO.GetComponentInParent<Health>().Hurt(damage);
 				OnHit();
 			}
